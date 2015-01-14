@@ -98,6 +98,11 @@ describe RestClient::Request do
       URI.should_receive(:parse).with('HTTPS://example.com/resource')
       @request.parse_url('HTTPS://example.com/resource')
     end
+
+    it 'parses an unencoded url into a URI object' do
+      URI.should_receive(:parse).with('http://example.com/resource?test=test%20with%20spaces')
+      @request.parse_url('http://example.com/resource?test=test with spaces')
+    end
   end
 
   describe "user - password" do
