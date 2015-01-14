@@ -8,13 +8,11 @@ module RestClient
 
     attr_accessor :args, :net_http_res
 
-    attr_writer :body
-
     def body
       self
     end
 
-    def Response.create body, net_http_res, args
+    def self.create body, net_http_res, args
       result = body || ''
       result.extend Response
       result.net_http_res = net_http_res
